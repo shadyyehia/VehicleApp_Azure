@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Vehicle_WebAPI.Helpers;
 
 namespace Vehicle_WebAPI
@@ -22,6 +16,7 @@ namespace Vehicle_WebAPI
         const string MyAllowSpecificOrigins = "CORSPolicy";
         const string HubPathString = "HubPathString";
         const string SignalR_Enabled = "SignalR_Enabled";
+        const string SignalR_Endpoint = "Azure:SignalR:ConnectionString";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -42,13 +37,17 @@ namespace Vehicle_WebAPI
                 builder =>
                 {
                     builder.AllowAnyMethod()
-            .AllowAnyHeader()
-            .WithOrigins(clientURL)
-            .AllowCredentials();
+                    .AllowAnyHeader()
+                    .WithOrigins(clientURL)
+                    .AllowCredentials();
                 });
             });
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "ClientApp/dist";
+            //});
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSignalR();
+            services.AddSignalR().AddAzureSignalR(Configuration[SignalR_Endpoint]);
           
         }
 
@@ -75,7 +74,7 @@ namespace Vehicle_WebAPI
 
             if (SR_Enabled)
             {
-                app.UseSignalR(route =>
+                app.UseAzureSignalR(route =>
                 {
                     route.MapHub<VehicleHub>(Configuration[HubPathString]);
                 });
