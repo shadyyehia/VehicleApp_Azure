@@ -18,5 +18,8 @@ module.exports = {
       uploadConcurrency: 5,
       pluginVersion: "3.0.0"
     }
+  },
+  configureWebpack:{
+    devtool: "source-map"
   }
 };
