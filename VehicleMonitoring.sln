@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Vehicle_ClientApp", "Vehicle_ClientApp\", "{4D12D886-2259-4A38-B2C5-F84E8E93E675}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_60851"
+		Debug.AspNetCompiler.PhysicalPath = "Vehicle_ClientApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60851\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_60851"
+		Release.AspNetCompiler.PhysicalPath = "Vehicle_ClientApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60851\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60851"
+		SlnRelativePath = "Vehicle_ClientApp\"
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest_VehiclesWebAPI", "UnitTest_VehiclesWebAPI\UnitTest_VehiclesWebAPI.csproj", "{CD6209EF-A0A3-4CB1-9758-04A9DE1A743C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle_WebAPI", "Vehicle_WebAPI\Vehicle_WebAPI.csproj", "{A4AAC644-968C-48B5-B322-1A0DBDE09002}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D12D886-2259-4A38-B2C5-F84E8E93E675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D12D886-2259-4A38-B2C5-F84E8E93E675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D12D886-2259-4A38-B2C5-F84E8E93E675}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D12D886-2259-4A38-B2C5-F84E8E93E675}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{CD6209EF-A0A3-4CB1-9758-04A9DE1A743C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD6209EF-A0A3-4CB1-9758-04A9DE1A743C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD6209EF-A0A3-4CB1-9758-04A9DE1A743C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD6209EF-A0A3-4CB1-9758-04A9DE1A743C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4AAC644-968C-48B5-B322-1A0DBDE09002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4AAC644-968C-48B5-B322-1A0DBDE09002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4AAC644-968C-48B5-B322-1A0DBDE09002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4AAC644-968C-48B5-B322-1A0DBDE09002}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F1A3A47-EE55-461A-A4F7-F95F4C7AA91A}
+	EndGlobalSection
+EndGlobal
