@@ -17,9 +17,13 @@ namespace Vehicle_WebAPI
         const string HubPathString = "HubPathString";
         const string SignalR_Enabled = "SignalR_Enabled";
         const string SignalR_Endpoint = "Azure:SignalR:ConnectionString";
+        bool SR_Enabled;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            string signalREnabled = Configuration[SignalR_Enabled];
+           
+            Boolean.TryParse(signalREnabled, out SR_Enabled);
         }
 
         public static IConfiguration Configuration { get; private set; }
@@ -47,7 +51,10 @@ namespace Vehicle_WebAPI
             //    configuration.RootPath = "ClientApp/dist";
             //});
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSignalR().AddAzureSignalR(Configuration[SignalR_Endpoint]);
+            if (SR_Enabled)
+            {
+                services.AddSignalR().AddAzureSignalR(Configuration[SignalR_Endpoint]);
+            }
           
         }
 
@@ -68,9 +75,7 @@ namespace Vehicle_WebAPI
             app.UseHttpsRedirection();
             app.UseMvc();
             //TODO: Remove this flag,when fixed on production
-            string signalREnabled = Configuration[SignalR_Enabled];
-            bool SR_Enabled;
-            Boolean.TryParse(signalREnabled, out SR_Enabled);
+           
 
             if (SR_Enabled)
             {
