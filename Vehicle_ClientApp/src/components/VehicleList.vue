@@ -20,14 +20,16 @@
                 <div class="form-group">
                   <select class="form-control" v-model="selectedCustomerId">
                     <option v-bind:value="-1"></option>
-                    <option v-for="cust in customerlist" v-bind:value="cust.id" v-bind:key="cust.id"
-                    >{{ cust.name }}</option>
+                    <option
+                      v-for="cust in customerlist"
+                      v-bind:value="cust.id"
+                      v-bind:key="cust.id">{{ cust.name }}</option>
                   </select>
                 </div>
               </th>
               <th>
                 <div class="form-group">
-                <select class="form-control" v-model="selectedStatus">
+                  <select class="form-control" v-model="selectedStatus">
                     <option value=""></option>
                     <option :value="true">Connected</option>
                     <option :value="false">Disconnected</option>
@@ -67,22 +69,22 @@ declare var process: {
 @Component
 export default class VehicleListComponent extends Vue {
   // $ = JQuery;
-  
+
   vehicleList: IVehicle[] = [];
   customerlist: ICustomer[] = [];
-  selectedCustomerId: number | null=-1;
-  selectedStatus: boolean | null = null;
-  get filteredList() {   
+  selectedCustomerId: number | null = -1;
+  selectedStatus: boolean | string = "";
+  get filteredList() {
     return this.vehicleList.filter(item => {
       let filtered = true;
-      if (this.selectedCustomerId && this.selectedCustomerId > -1) {
+      if (this.selectedCustomerId! > -1) {
         filtered = item.owner.id == this.selectedCustomerId;
       }
-      if (filtered) {
-        if (this.selectedStatus && isBoolean(this.selectedStatus)) {
-          filtered = item.isConnected == this.selectedStatus
-          }
+
+      if (filtered && this.selectedStatus !== "") {
+        filtered = item.isConnected == this.selectedStatus;
       }
+
       return filtered;
     });
   }

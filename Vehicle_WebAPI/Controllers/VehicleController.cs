@@ -35,7 +35,7 @@ namespace Vehicle_WebAPI.Controllers
         {
           
             currentTimeManager.Configure(() =>
-            hubContext.Clients.All.VehicleStatusChange(this.datamanager.GetData_SignalR()),500,60000);
+            hubContext.Clients.All.VehicleStatusChange(this.datamanager.GetData_SignalR()),3000,5000);
             return Ok(new { Message = "Request Completed" });
         }
 
