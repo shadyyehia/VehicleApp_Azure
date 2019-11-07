@@ -39,13 +39,6 @@ namespace Vehicle_WebAPI.Controllers
             return Ok(new { Message = "Request Completed" });
         }
 
-        [HttpPost]
-        [ActionName("filterData")]
-        public List<Vehicle> FilterData([FromBody]dynamic filter)
-        {
-            return this.datamanager.FilterData(filter);
-            
-        }
 
         [HttpGet]
         [ActionName("monitor_noSignalR")]
