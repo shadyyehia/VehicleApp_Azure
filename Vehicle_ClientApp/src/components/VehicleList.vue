@@ -81,7 +81,7 @@ export default class VehicleListComponent extends Vue {
   selectedStatus: boolean | string = "";
   loaded = false;
   get filteredList() {
-    return this.vehicleList.filter(item => {
+    return this.vehicleList!.filter(item => {
       let filtered = true;
       if (this.selectedCustomerId! > -1) {
         filtered = item.owner.id == this.selectedCustomerId;
