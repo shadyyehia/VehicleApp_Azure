@@ -22,7 +22,7 @@ describe("vehicle.vue", () => {
   it("get Customer list from BackEnd and use SignalR if on local host", () => {
     const wrapper = mount(VehicleList);
     if (process.env.VUE_APP_SignalR_ENABLED == "true") {
-      expect(axios.get).toBeCalledTimes(1);
+      expect(axios.get).toBeCalledTimes(2);
       console.log("Called twice: customer list and SignalR enabled");
     } else {
       expect(axios.get).toBeCalledTimes(1);
