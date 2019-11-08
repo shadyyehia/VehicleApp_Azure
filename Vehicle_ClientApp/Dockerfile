@@ -18,12 +18,21 @@ COPY . .
 # build app for production with minification
 RUN npm run build
 
-EXPOSE 9999
+EXPOSE 8080:8080
 CMD [ "http-server", "dist" ]
+
+
+# To run both the web client and the web API
+# docker-compose --no-ansi up -d  --force-recreate --remove-orphans
+# now check the client app on http://localhost:8080
+
+
+# OR run the web client  image only as following:
+
 
 
 # to build the image use this command
 # docker build -t vuejs-cookbook/dockerize-vuejs-app .
 # to run the image, map the internal port to the external port 8080
-# docker run -it -p 8080:9999 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
+# docker run -it -p 8080 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
 # launch the application using localhost:8080

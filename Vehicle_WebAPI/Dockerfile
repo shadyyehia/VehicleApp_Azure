@@ -3,7 +3,7 @@
 
 FROM microsoft/dotnet:2.2-aspnetcore-runtime-nanoserver-1803 AS base
 WORKDIR /app
-EXPOSE 54321
+EXPOSE 49638:49638
 
 FROM microsoft/dotnet:2.2-sdk-nanoserver-1803 AS build
 WORKDIR /src
@@ -23,8 +23,20 @@ ENTRYPOINT ["dotnet", "Vehicle_WebAPI.dll"]
 
 
 
+
+# To run both the web client and the web API
+# docker-compose --no-ansi up -d  --force-recreate --remove-orphans
+# now check the client app on http://localhost:49638
+
+
+# OR run the web api image only as following:
+
 # run this command to build the image 
 # docker build -t vehicleWebAPI .
 # run this command to run the container
-# docker run -d -p 54322:54321 --name myapp aspnetapp
+# we will not change the ports because of CORS already on these ports in app settings
+# docker run -d -p 49638 --name myapp aspnetapp
 # the web api now will be  avilable on port 54322
+
+
+

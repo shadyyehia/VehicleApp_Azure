@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  vehicleclientapp:
+    image: ${DOCKER_REGISTRY}vehicleclientapp    
+    build:
+      context: .
+      dockerfile: Vehicle_ClientApp/Dockerfile
+  vehiclewebapi:
+    image: ${DOCKER_REGISTRY-}vehiclewebapi
+    build:
+      context: .
+      dockerfile: Vehicle_WebAPI\Dockerfile
