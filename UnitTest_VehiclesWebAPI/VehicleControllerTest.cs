@@ -36,7 +36,7 @@ namespace UnitTest_VehiclesWebAPI
             var result = _controller.Monitor();
             _mockTimeManager.Verify(m => m.Configure(It.IsAny<Action>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once());
             // Assert about saveObject
-            Assert.Equal(50000, savedPeriod);
+            Assert.Equal(60000, savedPeriod);
 
         }
        
