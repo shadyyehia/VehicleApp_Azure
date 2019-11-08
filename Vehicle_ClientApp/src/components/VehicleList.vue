@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <h4>Vehicle List</h4>
         <div class="table-responsive">
-          <table id="vehicleTable"  class="table table-bordred table-striped">
+          <table id="vehicleTable" class="table table-bordred table-striped">
             <thead>
               <th>No.</th>
               <th>VIN</th>
@@ -23,7 +23,9 @@
                     <option
                       v-for="cust in customerlist"
                       v-bind:value="cust.id"
-                      v-bind:key="cust.id">{{ cust.name }}</option>
+                      v-bind:key="cust.id"
+                      >{{ cust.name }}</option
+                    >
                   </select>
                 </div>
               </th>
@@ -39,7 +41,7 @@
             </thead>
 
             <tbody>
-              <tr  v-for="(vehicle, index) in filteredList" v-bind:key="index">
+              <tr v-for="(vehicle, index) in filteredList" v-bind:key="index">
                 <td>{{ index + 1 }}</td>
                 <td>{{ vehicle.vin }}</td>
                 <td>{{ vehicle.registrationNo }}</td>
@@ -49,7 +51,7 @@
             </tbody>
           </table>
           <div v-if="!loaded">
-             The list gets updated every 1 minute...
+            The list gets updated every 1 minute...
           </div>
         </div>
       </div>
@@ -76,7 +78,7 @@ export default class VehicleListComponent extends Vue {
   vehicleList: IVehicle[] = [];
   customerlist: ICustomer[] = [];
   selectedCustomerId: number | null = -1;
-    selectedStatus: boolean | string = "";
+  selectedStatus: boolean | string = "";
   loaded = false;
   get filteredList() {
     return this.vehicleList.filter(item => {
@@ -105,8 +107,8 @@ export default class VehicleListComponent extends Vue {
   // tslint:disable-next-line:typedef
   onStatusChanged({ data }: { data: any }) {
     this.vehicleList = data;
-      console.log("notification from SignalR");
-      this.loaded = true;
+    console.log("notification from SignalR");
+    this.loaded = true;
     // if (this.question.id !== questionId) return
     // object.assign(this.question, { score })
   }

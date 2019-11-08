@@ -19,7 +19,7 @@ module.exports = {
       pluginVersion: "3.0.0"
     }
   },
-  configureWebpack:{
+  configureWebpack: {
     devtool: "source-map"
   }
 };
