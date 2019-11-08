@@ -18,7 +18,7 @@ node {
                 step([$class: 'MSTestPublisher', testResultsFile:"**/unit_tests.xml", failOnError: true, keepLongStdio: true])
                  
             }
-            stage('Publish Web API Locally')
+            stage('Deploy Web API Locally')
             {
                 
                 if(currentBuild.currentResult == "SUCCESS" )
