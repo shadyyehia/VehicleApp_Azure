@@ -25,18 +25,23 @@ namespace Vehicle_WebAPI.Controllers
             this.datamanager = datamanager;
             this.hubContext = vehicleHub;
             currentTimeManager = timermanager;
-
-
         }
         // Post: api/Vehicles
         [HttpGet]
         [ActionName("monitor")]
         public IActionResult Monitor()
         {
-          
-            currentTimeManager.Configure(() =>
-            hubContext.Clients.All.VehicleStatusChange(this.datamanager.GetData_SignalR()),3000,60000);
-            return Ok(new { Message = "Request Completed" });
+            try
+            {
+                currentTimeManager.Configure(() =>
+                hubContext.Clients.All.VehicleStatusChange(this.datamanager.GetData_SignalR()), 3000, 60000);
+                return Ok(new { Message = "Request Completed" });
+            } catch (Exception ex)
+            {
+             
+                //Logging 
+                throw;
+            }
         }
 
 
@@ -53,7 +58,15 @@ namespace Vehicle_WebAPI.Controllers
         [ActionName("getCustomers")]
         public IEnumerable<Customer> getCustomers()
         {
-            return datamanager.GetCustomers();
+            try
+            {
+                return datamanager.GetCustomers();
+            }
+            catch {
+                //logging
+                throw;
+                
+            }
         }
 
 
@@ -66,7 +79,15 @@ namespace Vehicle_WebAPI.Controllers
         [ActionName("ping")]
         public bool IsConnected(int id)
         {
-            return this.datamanager.isConnected(id);
+            try
+            {
+                return this.datamanager.isConnected(id);
+            }
+            catch {
+                //Logging 
+                throw;
+            }
+            
         }
         //[HttpGet]
         //[ActionName("updateV")]
