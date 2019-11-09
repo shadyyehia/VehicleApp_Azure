@@ -31,12 +31,12 @@ ENTRYPOINT ["dotnet", "Vehicle_WebAPI.dll"]
 
 # OR run the web api image only as following:
 
-# run this command to build the image 
+# ----run this command to build the image 
 # docker build -t vehicleWebAPI .
-# run this command to run the container
-# we will not change the ports because of CORS already on these ports in app settings
-# docker run -d -p 49638 --name myapp aspnetapp
-# the web api now will be  avilable on port 54322
+# ---run this command to run the container
+# ---we will not change the ports because of CORS already on these ports in app settings
+# docker run -d -p 49638 --name myapp vehicleWebAPI
+# ----the web api now will be  avilable on port 54322
 
 
 

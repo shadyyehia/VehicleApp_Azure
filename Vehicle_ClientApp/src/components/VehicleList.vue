@@ -50,7 +50,7 @@
               </tr>
             </tbody>
           </table>
-          <div v-if="!loaded">
+          <div>
             The list gets updated every 1 minute...
           </div>
         </div>
@@ -79,20 +79,23 @@ export default class VehicleListComponent extends Vue {
   customerlist: ICustomer[] = [];
   selectedCustomerId: number | null = -1;
   selectedStatus: boolean | string = "";
-  loaded = false;
+  
   get filteredList() {
-    return this.vehicleList!.filter(item => {
-      let filtered = true;
-      if (this.selectedCustomerId! > -1) {
-        filtered = item.owner.id == this.selectedCustomerId;
-      }
+    if (this.vehicleList != null) {
+      return this.vehicleList.filter(item => {
+        let filtered = true;
+        if (this.selectedCustomerId! > -1) {
+          filtered = item.owner.id == this.selectedCustomerId;
+        }
 
-      if (filtered && this.selectedStatus !== "") {
-        filtered = item.isConnected == this.selectedStatus;
-      }
+        if (filtered && this.selectedStatus !== "") {
+          filtered = item.isConnected == this.selectedStatus;
+        }
 
-      return filtered;
-    });
+        return filtered;
+      });
+    }
+    return null;
   }
   created() {
     // listen to score changes coming from SignalR events
@@ -108,7 +111,7 @@ export default class VehicleListComponent extends Vue {
   onStatusChanged({ data }: { data: any }) {
     this.vehicleList = data;
     console.log("notification from SignalR");
-    this.loaded = true;
+    
     // if (this.question.id !== questionId) return
     // object.assign(this.question, { score })
   }
@@ -148,7 +151,7 @@ export default class VehicleListComponent extends Vue {
       );
       promise
         .then((response: any) => {
-          console.log(response.data);
+          this.vehicleList = response.data;
         })
         .catch((error: any) => {
           console.log(error);

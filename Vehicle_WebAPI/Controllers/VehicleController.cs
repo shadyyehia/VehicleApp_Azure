@@ -29,13 +29,15 @@ namespace Vehicle_WebAPI.Controllers
         // Post: api/Vehicles
         [HttpGet]
         [ActionName("monitor")]
-        public IActionResult Monitor()
+        public List<Vehicle> Monitor()
         {
             try
             {
+                //Register timer to update UI
                 currentTimeManager.Configure(() =>
-                hubContext.Clients.All.VehicleStatusChange(this.datamanager.GetData_SignalR()), 3000, 60000);
-                return Ok(new { Message = "Request Completed" });
+                hubContext.Clients.All.VehicleStatusChange(this.datamanager.GetData_SignalR()), 500, 60000);
+                return this.datamanager.GetData_SignalR();
+                //return Ok(new { Message = "Request Completed" });
             } catch (Exception ex)
             {
              

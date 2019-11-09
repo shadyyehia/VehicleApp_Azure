@@ -32,7 +32,7 @@ CMD [ "http-server", "dist" ]
 
 
 # to build the image use this command
-# docker build -t vuejs-cookbook/dockerize-vuejs-app .
+# docker build -t Vehicle_ClientApp/dist .
 # to run the image, map the internal port to the external port 8080
-# docker run -it -p 8080 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
+# docker run -it -p 8080 --rm --name Vehiclecontainer Vehicle_ClientApp/dist
 # launch the application using localhost:8080
